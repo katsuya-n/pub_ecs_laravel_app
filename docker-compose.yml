@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    build:
+      context: docker/php-apache
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    networks:
+      - ecs_laravel_app_network
+  mysql:
+    image: 'mysql:5.7'
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+    networks:
+      - ecs_laravel_app_network
+
+networks:
+  ecs_laravel_app_network:
+    driver: bridge
