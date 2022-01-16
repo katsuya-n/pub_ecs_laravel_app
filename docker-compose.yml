@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - '80:80'
+    volumes:
+          - '.:/var/www/html'
     networks:
       - ecs_laravel_app_network
   mysql:
