@@ -12,7 +12,7 @@ class MVersionSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::table('m_version')->insert([
             'version' => '1.0.0',

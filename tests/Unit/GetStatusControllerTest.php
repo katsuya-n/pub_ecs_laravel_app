@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use App\Http\Controllers\GetStatusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class GetStatusControllerTest extends TestCase
 {

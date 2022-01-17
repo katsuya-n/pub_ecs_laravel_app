@@ -4,16 +4,14 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class GetVersionTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
      * @return void
      */
-    public function test_example()
+    public function test_get_version(): void
     {
-        $response = $this->get('/');
+        $response = $this->get('/api/version');
 
         $response->assertStatus(200);
     }
