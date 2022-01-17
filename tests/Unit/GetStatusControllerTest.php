@@ -5,14 +5,14 @@ namespace Tests\Unit;
 use App\Http\Controllers\GetStatusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class GetStatusControllerTest extends TestCase
 {
     /**
      * @return void
      */
-    public function test_get_status_controller()
+    public function test_get_status_controller(): void
     {
         $controller = new GetStatusController();
         $request = Request::create(

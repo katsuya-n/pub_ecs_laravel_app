@@ -9,7 +9,7 @@ class GetStatusTest extends TestCase
     /**
      * @return void
      */
-    public function test_get_status()
+    public function test_get_status(): void
     {
         $response = $this->get('/api/status');
 
