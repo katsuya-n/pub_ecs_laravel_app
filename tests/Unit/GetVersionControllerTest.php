@@ -3,17 +3,21 @@
 namespace Tests\Unit;
 
 use App\Http\Controllers\GetVersionController;
+use Database\Seeders\MVersionSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class GetVersionControllerTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * @return void
      */
     public function test_get_version_controller(): void
     {
+        $this->seed(MVersionSeeder::class);
         $controller = new GetVersionController();
         $request = Request::create(
             '/api/version',
