@@ -18,6 +18,9 @@ jobs:
     - name: cp env
       run: cp .env.example .env
 
+    - name: start project
+      run: docker-compose up -d
+
     - name: key generate
       run: docker-compose run --rm ecs_laravel_app php artisan key:generate
 
