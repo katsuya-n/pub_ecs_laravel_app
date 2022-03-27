@@ -21,6 +21,10 @@ jobs:
     - name: start project
       run: docker-compose up -d
 
+    # dbの起動完了までにmigrationが走らないように
+    - name: sleep
+      run: sleep 10
+
     - name: key generate
       run: docker-compose run --rm ecs_laravel_app php artisan key:generate
 
