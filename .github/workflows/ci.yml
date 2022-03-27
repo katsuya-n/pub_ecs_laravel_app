@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+
+    # dbの起動完了後にmigrationを走らせたいのでここで起動
+    - name: start db
+      run: docker-compose up -d ecs_laravel_app_db
+
+    - name: composer install
+      run: docker-compose run --rm ecs_laravel_app composer install
+
+    - name: cp env
+      run: cp .env.example .env
+
+    - name: start app
+      run: docker-compose up -d
+
+    - name: key generate
+      run: docker-compose run --rm ecs_laravel_app php artisan key:generate
+
+    - name: migrate
+      run: docker-compose run --rm ecs_laravel_app php artisan migrate
+
+    - name: test
+      run: docker-compose run --rm ecs_laravel_app ./vendor/bin/phpunit
